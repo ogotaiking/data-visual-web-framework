@@ -19,38 +19,35 @@
 Consider NodeJS bind  80/443 port must request *sudo* may have some security issues.
 We use nginx as a proxy server. the following setups is setting Nginx as Proxy.
 
-1. Install nginx:
+### Install nginx:
+
     sudo apt-get install -y nginx
 
-2. Generate Certification File for SSL
+### Generate Certification File for SSL
 
-    $ sudo mkdir /etc/nginx/cert; cd /etc/nginx/cert
-    $ openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-    ...
-    $ openssl rsa -passin pass:x -in server.pass.key -out server.key
-    writing RSA key
-    $ rm server.pass.key
-    $ openssl req -new -key server.key -out server.csr
-    ...
+    sudo mkdir /etc/nginx/cert; cd /etc/nginx/cert
+    openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
+    openssl rsa -passin pass:x -in server.pass.key -out server.key
+    rm server.pass.key
+    openssl req -new -key server.key -out server.csr
 
-3. Edit nginx config for http proxy
+
+### Edit nginx config for http proxy
 
     sudo vi /etc/nginx/sites-enabled/default
 
-    <!=Append the following config  =!>
+#### Append the following config
 
     upstream nodejs {
-        server 127.0.0.1:3000;
+    server 127.0.0.1:3000;
         keepalive 64;
     }
-
     server {
         listen 80;
         listen 443 ssl;
         server_name www.foo.org  foo.org;
         ssl_certificate         /etc/nginx/cert/server.crt;
         ssl_certificate_key     /etc/nginx/cert/server.key;
-
         access_log /var/log/nginx/test.log;
         location / {
             proxy_set_header X-Real-IP $remote_addr;
