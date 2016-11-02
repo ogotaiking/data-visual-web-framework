@@ -7,14 +7,14 @@
 var app = require('../app');
 var debug = require('debug')('kevin:server');
 var http = require('http');
-var https = require('https');
+//
 
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-var httpsPort = normalizePort(process.env.HTTPSPORT || '443');
+
 app.set('port', port);
 
 /**
@@ -22,10 +22,21 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = require('socket.io')(server);
+require('../app/controllers/socketio/index')(io);
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
 
 /**
- * HTTPS Server Enablement
+ * HTTPS Server Enablement--Default Disable and Offload SSL on Nginx
  */
+
+ /*
+var https = require('https');
+var httpsPort = normalizePort(process.env.HTTPSPORT || '3001');
 var fs = require('fs');
 var https = require('https');
 var privateKey  = fs.readFileSync(__dirname + '/../config/sslcert/server.key', 'utf8');
@@ -33,19 +44,15 @@ var certificate = fs.readFileSync(__dirname + '/../config/sslcert/server.crt', '
 var credentials = {key: privateKey, cert: certificate};
 var httpsServer = https.createServer(credentials, app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-var io = require('socket.io')(server);
 var sslio = require('socket.io')(httpsServer);
-require('../app/controllers/socketio/index')(io);
 require('../app/controllers/socketio/index')(sslio);
- server.listen(port);
- server.on('error', onError);
- server.on('listening', onListening);
- httpsServer.listen(httpsPort);
- httpsServer.on('error', onError);
- httpsServer.on('listening', onListeningHTTPS);
+httpsServer.listen(httpsPort);
+httpsServer.on('error', onError);
+httpsServer.on('listening', onListeningHTTPS);
+*/
+
+
+
 
 
 /**
