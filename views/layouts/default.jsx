@@ -6,8 +6,11 @@ class DefaultLayout extends React.Component {
       <html>
         <head><title>{this.props.title}</title>
           <link rel='stylesheet' href='/stylesheets/style.css' />
+
           </head>
-        <body>{this.props.children}</body>
+        <body>{this.props.children}
+        <script src="/js/bundle.js"></script>
+        </body>
       </html>
     );
   }

@@ -3,12 +3,12 @@ var path = require('path');
 
 module.exports = {
     entry: [
-        path.resolve(__dirname, 'views/index.jsx')
+        path.resolve(__dirname, 'client/entry.js')
     ],
     output: {
         path: __dirname + '/public',
         publicPath: '/',
-        filename: './bundle.js'
+        filename: '/js/bundle.js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -22,7 +22,7 @@ module.exports = {
             loader: 'url-loader?limit=50000&name=[path][name].[ext]'
         }, {
             test: /\.js[x]?$/,
-            include: path.resolve(__dirname, './views'),
+            include: path.resolve(__dirname, './client'),
             exclude: /node_modules/,
             loader: 'babel',
             query: {

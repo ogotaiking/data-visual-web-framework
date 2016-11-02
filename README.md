@@ -1,7 +1,7 @@
 # Data Visualization Framework
  build by Express + React + Socket.io + MongoDB
 
-## Initial Setup
+## 1.Initial Setup
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     sudo apt-get install -y nodejs
     sudo apt-get install sudonpm mongodb
@@ -15,9 +15,10 @@
 
     yarn config set registry 'https://registry.npm.taobao.org'
 
-## Security Setup
-Consider NodeJS bind  80/443 port must request *sudo* may have some security issues.
-We use nginx as a proxy server. the following setups is setting Nginx as Proxy.
+## 2. Security Setup
+Consider NodeJS bind  80/443 port must request *sudo*.
+It may have some security issues.
+We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
 
 ### Install nginx:
 
