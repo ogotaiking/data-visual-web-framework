@@ -4,7 +4,7 @@ var isLoggedIn = require('./authCheck');
 module.exports = function(url) {
     return function(req, res, next) {
         if (req.url.indexOf(url) === 0) {
-            console.log(req.url);
+            //console.log(req.url);
             return isLoggedIn(req, res, next);
         } else
             next();

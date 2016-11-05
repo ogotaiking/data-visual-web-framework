@@ -2,10 +2,11 @@ import LikeButton from './comp/button';
 import StockChart from './comp/charts/stock'
 import React, {Component} from 'react';
 import { render } from 'react-dom';
-var $ = require('jquery');
+//var $ = require('jquery');
 
 import DatePicker from 'antd/lib/date-picker'
 import 'antd/dist/antd.css';
+
 render(<DatePicker />, document.getElementById('datepick'));
 
 
@@ -31,7 +32,7 @@ class AA  extends LikeButton {
 }
 
 render (
-  <AA haha="您好啊~~" />,
+  <AA haha="您好啊aaaaaa~~" />,
   document.getElementById('example')
 );
 

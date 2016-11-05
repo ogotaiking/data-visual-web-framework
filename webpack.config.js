@@ -3,7 +3,9 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        index : path.resolve(__dirname, 'client/entry.js')
+        index : path.resolve(__dirname, 'client/entry.js'),
+        table : path.resolve(__dirname, 'client/comp/table.js')
+
     },
     output: {
         path: __dirname + '/public',

@@ -1,9 +1,15 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  console.log('fuck');
-  var socket = io.connect();
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-</script>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Express</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+    <div id="tabledemo"></div>
+    <script src="/js/common.js"></script>
+    <script src="/js/table.js"></script>
+</body>
+
+</html>

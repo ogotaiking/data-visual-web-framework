@@ -19,10 +19,10 @@ module.exports = function(io) {
                 passport.initialize()(socket.request, {}, function() {
                     passport.session()(socket.request, {}, function() {
                         if (socket.request.user) {
-                            console.log('auth successful');
+                            //console.log('auth successful');
                             next(null, true);
                         } else {
-                            console.log('auth failed');
+                            //console.log('auth failed');
                             next(new Error('User is not authenticatied'), false);
                         }
                     })
@@ -34,7 +34,7 @@ module.exports = function(io) {
 /**
   *  Add aditional Socket IO service int the following segment
   */
-    require('./demo')(io);
+    require('./demo/basic')(io);
 
 
 }

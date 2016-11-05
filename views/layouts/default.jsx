@@ -10,7 +10,10 @@ class DefaultLayout extends React.Component {
           </head>
         <body>{this.props.children}
         <script src="/js/common.js"></script>
-        <script src={"/js/"+this.props.jslib}></script>
+        {this.props.jslib.map(function(item){
+           return <script src={"/js/"+item}></script>;
+        })
+        }
         </body>
       </html>
     );
