@@ -2,12 +2,13 @@ import LikeButton from './comp/button';
 import StockChart from './comp/charts/stock'
 import React, {Component} from 'react';
 import { render } from 'react-dom';
+import "babel-polyfill";
 //var $ = require('jquery');
-
-import DatePicker from 'antd/lib/date-picker'
+var antd = require('antd');
+var DatePickerA = antd.DatePicker;
 import 'antd/dist/antd.css';
 
-render(<DatePicker />, document.getElementById('datepick'));
+render(<DatePickerA />, document.getElementById('datepick'));
 
 
 class AA  extends LikeButton {

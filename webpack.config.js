@@ -33,6 +33,10 @@ module.exports = {
         }, ]
     },
     plugins: [
+        new webpack.DllReferencePlugin({
+          context: __dirname,
+          manifest: require('./manifest.json'),
+        }),
         new webpack.optimize.UglifyJsPlugin({
             output: {
                 comments: false,
@@ -41,6 +45,7 @@ module.exports = {
                 warnings: false
             }
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
