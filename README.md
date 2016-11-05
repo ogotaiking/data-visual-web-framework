@@ -97,8 +97,8 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
                [0] 561ms -> [9] 156ms -> factory:288ms building:7777ms = 8782ms
              5 hidden modules
 
-### 3.2 setup vendor.js , ref dll.config.js
-    webpack --config dll.config.js
+### 3.2 setup vendor.js , ref venor.config.js
+    webpack --config vendor.config.js
 
     2 files :  manifest.json / vendor.js , include vendor.js in layout template
 
