@@ -2,13 +2,13 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    entry: [
-        path.resolve(__dirname, 'client/entry.js')
-    ],
+    entry: {
+        index : path.resolve(__dirname, 'client/entry.js')
+    },
     output: {
         path: __dirname + '/public',
         publicPath: '/',
-        filename: '/js/bundle.js'
+        filename: '/js/[name].js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
@@ -43,6 +43,8 @@ module.exports = {
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
             },
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.CommonsChunkPlugin('./js/common.js')
     ]
 };

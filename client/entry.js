@@ -4,6 +4,11 @@ import React, {Component} from 'react';
 import { render } from 'react-dom';
 var $ = require('jquery');
 
+import DatePicker from 'antd/lib/date-picker'
+import 'antd/dist/antd.css';
+render(<DatePicker />, document.getElementById('datepick'));
+
+
 class AA  extends LikeButton {
   constructor(props)
   {
@@ -40,9 +45,9 @@ var data = [
               [1221177600000, 21.28],
               [1221436800000, 20.05],
               [1221523200000, 19.98],
-              [1221609600000, 18.26],
+              [1221609600000, 13.26],
               [1221696000000, 19.16],
-              [1221782400000, 20.13],
+              [1221782400000, 21.13],
               [1222041600000, 18.72],
               [1222128000000, 18.12],
               [1222214400000, 18.39],
