@@ -31,6 +31,8 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
     openssl rsa -passin pass:x -in server.pass.key -out server.key
     rm server.pass.key
     openssl req -new -key server.key -out server.csr
+    openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+
 
 
 ### Edit nginx config for http proxy
