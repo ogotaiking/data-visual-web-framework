@@ -4,7 +4,8 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var User = require('../app/models/user');
 var sessionConfig = require('../config/session.js');
-
+var fs = require('fs');
+sessionConfig.secret = fs.readFileSync(__dirname + '/../config/secretkey','utf8');
 /*
  * Authentication for token
  */
@@ -19,11 +20,11 @@ router.post('/auth', function(req, res) {
             throw err;
 
         if (!user) {
-            res.json({success: false, message: 'Authentication Failure'});
+            res.json({success: false, message: 'Invalid Username'});
         } else if (user) {
             // Check Password
             if (!user.validPassword(req.body.password)) {
-                res.json({success: false, message: 'Authentication Failure-2'});
+                res.json({success: false, message: 'Wrong Password'});
             } else {
 
                 // Create token
@@ -31,13 +32,13 @@ router.post('/auth', function(req, res) {
                     expiresIn: 60*60*2 // set expireTime
                 });
                 // JSON return token
-                res.json({success: true, message: 'Token info', token: token});
+                res.json({success: true, message: 'Enjoy Token', token: token});
             }
         }
     });
 });
 
-//This is a middleware for token authentication
+//This is a middleware for token validation
 router.use(function(req, res, next) {
     //check token in the message
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -64,12 +65,17 @@ router.use(function(req, res, next) {
 
 
 /**
-  *  import user Model and controller
+  *  import RestAPI module here
   */
 
+
+//Role check section , maybe it could be a middle ware for different API
  router.get('/checkadmin',function(req,res,next){
-      res.send(req.decoded._doc.role);  // this is used for check privilegs
+      res.send(req.decoded._doc.role);
   });
+
+
+
 
 var User = require('../app/models/user');
 var userControl = require('../app/controllers/userMgmt/users.controller');

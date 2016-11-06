@@ -50,6 +50,10 @@ app.use(cookieParser());
 var session  = require('express-session');
 var configDB = require('./config/database.js');
 var sessionConfig = require('./config/session.js');
+var fs = require('fs');
+sessionConfig.secret = fs.readFileSync(__dirname + '/config/secretkey','utf8');
+//console.log(sessionConfig.secret);
+
 var MongoStore = require('connect-mongo')(session);
 sessionConfig.store = new MongoStore({  url: configDB.url });
 
