@@ -53,6 +53,7 @@ var sessionConfig = require('./config/session.js');
 var MongoStore = require('connect-mongo')(session);
 sessionConfig.store = new MongoStore({  url: configDB.url });
 
+
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -91,6 +92,9 @@ app.use(express.static(path.join(__dirname, 'public')));
  **/
 
 app.use('/', routes);
+
+
+
 
 
 var adminMgr = require('./routes/admin');

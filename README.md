@@ -62,6 +62,20 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
         }    
     }
 
+### Enable Gzip on nginx
+    sudo vi /etc/nginx/nginx.conf , enable the following config
+
+        gzip on;
+        gzip_disable "msie6";
+
+        gzip_vary on;
+        gzip_proxied any;
+        gzip_comp_level 6;
+        gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+
 ## 3. Resolve webpack build slow problem
 
 ### 3.1 Debug webpack build runtime:

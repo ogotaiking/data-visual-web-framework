@@ -21,7 +21,7 @@ router.get('/test/:aaa', function(req, res, next) {
   res.send(req.params);
 });
 
-var userControl = require('../app/controllers/users.controller');
+var userControl = require('../app/controllers/userMgmt/users.controller');
 
 router.post('/user',userControl.create);
 router.get('/user',userControl.list);
