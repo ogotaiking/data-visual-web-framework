@@ -15,30 +15,28 @@ var isLoggedIn = require('./app/controllers/login/authCheck');
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'ejs');
 
+
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+var viewEngineBeautify = true;
+if (process.env.NODE_ENV === 'development') {
+    app.use(logger('dev'));
+} else if (process.env.NODE_ENV === 'production'){
+  app.use(compress());
+  viewEngineBeautify = false;
+}
+
 /**
   * React View Engine setup
   */
 app.set('view engine', 'jsx');
 var cfgERV = {
-  beautify: true,
+  beautify: viewEngineBeautify,
   babel : {
     presets: ['react', 'es2015']
   },
   transformViews: true  //it's about babel-register for view
 }
 app.engine('jsx', require('express-react-views').createEngine(cfgERV));
-
-
-
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-if (process.env.NODE_ENV === 'development') {
-    app.use(logger('dev'));
-} else if (process.env.NODE_ENV === 'production'){
-  app.use(compress());
-}
-
 
 
 app.use(bodyParser.json());
