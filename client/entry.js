@@ -1,8 +1,9 @@
+/* demo */
 import LikeButton from './comp/button';
 import StockChart from './comp/charts/stock'
 import React, {Component} from 'react';
 import { render } from 'react-dom';
-import "babel-polyfill";
+import 'babel-polyfill';
 //var $ = require('jquery');
 var antd = require('antd');
 var DatePickerA = antd.DatePicker;
@@ -12,29 +13,29 @@ render(<DatePickerA />, document.getElementById('datepick'));
 
 
 class AA  extends LikeButton {
-  constructor(props)
-  {
-      super(props);
+    constructor(props)
+    {
+        super(props);
     }
     handleClick(e) {
-      this.setState( { liked: !this.state.liked });
-      console.log('你点了我一下');
+        this.setState( { liked: !this.state.liked });
+        console.log('你点了我一下');
     }
 
     render() {
-      const text = this.state.liked ? 'like' : 'haven\'t liked' ;
-      const text2 = this.state.fuck ? 'FUCK' : 'NONONO' ;
-      return (
-        <p onClick={this.handleClick.bind(this)} onMouseOver={this.handleClick2.bind(this)}>
-          {this.props.haha} You {text} this.{text2} HAHHAAH
-        </p>
-      );
+        const text = this.state.liked ? 'like' : 'haven\'t liked' ;
+        const text2 = this.state.fuck ? 'FUCK' : 'NONONO' ;
+        return (
+            <p onClick={this.handleClick.bind(this)} onMouseOver={this.handleClick2.bind(this)}>
+            {this.props.haha} You {text} this.{text2} HAHHAAH
+            </p>
+        );
     }
 }
 
 render (
-  <AA haha="您好啊aaaaaa~~" />,
-  document.getElementById('example')
+    <AA haha="您好啊aaaaaa~~" />,
+    document.getElementById('example')
 );
 
 
@@ -62,25 +63,25 @@ var data = [
               [1222992000000, 13.87],
               [1223251200000, 14.02],
               [1223337600000, 12.74]
-            ];
+];
 
 var config = {
-  rangeSelector: {
-    selected: 1
-  },
-  title: {
-    text: 'AAPL Stock Price'
-  },
-  series: [{
-    name: 'AAPL',
-    data: data,
-    tooltip: {
-      valueDecimals: 2
-    }
-  }]
+    rangeSelector: {
+        selected: 1
+    },
+    title: {
+        text: 'AAPL Stock Price'
+    },
+    series: [{
+        name: 'AAPL',
+        data: data ,
+        tooltip: {
+            valueDecimals: 2
+        }
+    }]
 };
 
 render (
-  <StockChart data = {data} config= {config} />,
-  document.getElementById('chart')
+    <StockChart data = {data} config= {config} />,
+    document.getElementById('chart')
 );

@@ -38,6 +38,7 @@ module.exports = {
                 warnings: false
             }
         }),
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.DllPlugin({
             path: 'manifest.json',

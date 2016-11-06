@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 var antd = require('antd');
-import "babel-polyfill";
+import 'babel-polyfill';
 import 'antd/dist/antd.css';
 var Table = antd.Table;
 var dataSource = [{

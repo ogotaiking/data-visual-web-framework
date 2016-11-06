@@ -24,13 +24,21 @@ module.exports = {
             loader: 'url-loader?limit=50000&name=[path][name].[ext]'
         }, {
             test: /\.js[x]?$/,
-            include: path.resolve(__dirname, './client'),
+            include: [ path.resolve(__dirname, './client')],
             exclude: /node_modules/,
             loader: 'babel',
             query: {
                 presets: ['react', 'es2015']
             }
-        }, ]
+        },{
+            test: /\.js[x]?$/,
+            include: [ path.resolve(__dirname, './client')],
+            exclude: /node_modules/,
+            loader: 'eslint-loader',
+        } ]
+    },
+    eslint: {
+      configFile: '.eslintrc'
     },
     plugins: [
         new webpack.DllReferencePlugin({
@@ -45,6 +53,7 @@ module.exports = {
                 warnings: false
             }
         }),
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             'process.env': {
