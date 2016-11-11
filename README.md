@@ -59,6 +59,8 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
             proxy_set_header X-Nginx-Proxy true;
             proxy_set_header Connection "";
             proxy_pass      http://nodejs;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
         }    
     }
 
