@@ -8,5 +8,6 @@
 	"Project Name": "Project Name",
 	"Oops! Wrong password.": "Oops! Wrong password.",
 	"Password mismatch.": "Password mismatch.",
-	"That username/email is already taken.": "That username/email is already taken."
+	"That username/email is already taken.": "That username/email is already taken.",
+	"name": "中文姓名"
 }

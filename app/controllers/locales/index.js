@@ -8,7 +8,7 @@ module.exports = function (req, res, next){
     locales: languages,  //声明包含的语言
     register: res,
     directory: __dirname + '/lib',  //翻译json文件的路径
-    defaultLocale: 'en',   //默认的语言，即为上述标准4
+    defaultLocale: 'en',   //默认的语言
     indent: "\t",
     extension: '.js'  // 由于 JSON 不允许注释，所以用 js 会方便一点，也可以写成其他的，不过文件格式是 JSON
   });

@@ -9,7 +9,8 @@ var localeArr = require('../app/controllers/locales/transArr');
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'Express',
-        name: 'Kevin'
+        name: 'Kevin',
+        locale: res.locals.locale
     });
 });
 
