@@ -9,6 +9,7 @@ var antd = require('antd');
 var DatePickerA = antd.DatePicker;
 import 'antd/dist/antd.css';
 
+
 render(<DatePickerA />, document.getElementById('datepick'));
 
 
@@ -40,48 +41,9 @@ render (
 
 
 
-var data = [
-              [1220832000000, 22.56],
-              [1220918400000, 21.67],
-              [1221004800000, 21.66],
-              [1221091200000, 21.81],
-              [1221177600000, 21.28],
-              [1221436800000, 20.05],
-              [1221523200000, 19.98],
-              [1221609600000, 13.26],
-              [1221696000000, 19.16],
-              [1221782400000, 21.13],
-              [1222041600000, 18.72],
-              [1222128000000, 18.12],
-              [1222214400000, 18.39],
-              [1222300800000, 18.85],
-              [1222387200000, 18.32],
-              [1222646400000, 15.04],
-              [1222732800000, 16.24],
-              [1222819200000, 15.59],
-              [1222905600000, 14.3],
-              [1222992000000, 13.87],
-              [1223251200000, 14.02],
-              [1223337600000, 12.74]
-];
 
-var config = {
-    rangeSelector: {
-        selected: 1
-    },
-    title: {
-        text: 'AAPL Stock Price'
-    },
-    series: [{
-        name: 'AAPL',
-        data: data ,
-        tooltip: {
-            valueDecimals: 2
-        }
-    }]
-};
 
 render (
-    <StockChart data = {data} config= {config} />,
+    <StockChart url="/market.json" name="苹果" symbol="AAPL" pollInterval={2000} />,
     document.getElementById('chart')
 );

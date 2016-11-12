@@ -12,6 +12,7 @@ const vendors = [
     'css-loader/lib/css-base.js',
     'style-loader/addStyles.js',
     'babel-polyfill',
+    'jquery'
 ];
 
 module.exports = {

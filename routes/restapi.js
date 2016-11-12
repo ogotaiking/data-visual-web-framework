@@ -40,6 +40,14 @@ router.post('/auth', function(req, res) {
 
 //This is a middleware for token validation
 router.use(function(req, res, next) {
+    //For Web ajax purpose:
+    //if this session has cookie , will not require any aditional token
+    //console.log(req.user.role);
+    if (req.isAuthenticated()){
+        req.previledge = req.user.role;
+        return next();
+    }
+
     //check token in the message
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
     // pasre token
@@ -50,6 +58,7 @@ router.use(function(req, res, next) {
                 return res.json({ success: false, message: 'invalid token.' });
             } else {
                 req.decoded = decoded;
+                req.previledge = req.decoded._doc.role;
                 next();
             }
         });
@@ -71,7 +80,7 @@ router.use(function(req, res, next) {
 
 //Role check section , maybe it could be a middle ware for different API
  router.get('/checkadmin',function(req,res,next){
-      res.send(req.decoded._doc.role);
+      res.send(req.previledge);
   });
 
 
