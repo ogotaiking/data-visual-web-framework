@@ -4,12 +4,85 @@
 ## 1.Initial Setup
     curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
     sudo apt-get install -y nodejs
-    sudo apt-get install sudonpm mongodb
+    sudo apt-get install npm
 
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
-    npm install -g express express-generator nodemon
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+    echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+    sudo apt-get update
+    sudo apt-get install -y mongodb-org
 
-    sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
+    # add /etc/systemd/system/mongodb.service
+    
+    [Unit]
+    Description=High-performance, schema-free document-oriented database
+    After=network.target
+
+    [Service]
+    User=mongodb
+    ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
+
+    [Install]
+    WantedBy=multi-user.target
+
+
+    # Then  sudo systemctl start mongodb / sudo systemctl enable mongodb
+
+    #DISABLE HUDGEPAGE Trasnparent
+
+    Create the following file at /etc/init.d/disable-transparent-hugepages 
+
+    #!/bin/bash
+    ### BEGIN INIT INFO
+    # Provides:          disable-transparent-hugepages
+    # Required-Start:    $local_fs
+    # Required-Stop:
+    # X-Start-Before:    mongod mongodb-mms-automation-agent
+    # Default-Start:     2 3 4 5
+    # Default-Stop:      0 1 6
+    # Short-Description: Disable Linux transparent huge pages
+    # Description:       Disable Linux transparent huge pages, to improve
+    #                    database performance.
+    ### END INIT INFO
+
+    case $1 in
+      start)
+        if [ -d /sys/kernel/mm/transparent_hugepage ]; then
+          thp_path=/sys/kernel/mm/transparent_hugepage
+        elif [ -d /sys/kernel/mm/redhat_transparent_hugepage ]; then
+          thp_path=/sys/kernel/mm/redhat_transparent_hugepage
+        else
+          return 0
+        fi
+
+        echo 'never' > ${thp_path}/enabled
+        echo 'never' > ${thp_path}/defrag
+
+        re='^[0-1]+$'
+        if [[ $(cat ${thp_path}/khugepaged/defrag) =~ $re ]]
+        then
+          # RHEL 7
+          echo 0  > ${thp_path}/khugepaged/defrag
+        else
+          # RHEL 6
+          echo 'no' > ${thp_path}/khugepaged/defrag
+        fi
+
+        unset re
+        unset thp_path
+        ;;
+    esac
+
+    then--------------------
+    sudo chmod 755 /etc/init.d/disable-transparent-hugepages
+    sudo update-rc.d disable-transparent-hugepages defaults
+    
+
+
+
+    sudo  npm install -g cnpm --registry=https://registry.npm.taobao.org
+    sudo cnpm install webpack nodemon express express-generator pm2 --global
+
+     sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
     echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo apt-get update && sudo apt-get install yarn
 
