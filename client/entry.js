@@ -47,3 +47,10 @@ render (
     <StockChart url="/market.json" name="苹果" symbol="AAPL" pollInterval={2000} />,
     document.getElementById('chart')
 );
+
+
+import CommentBox from './comp/comment/CommentBox';
+render (
+    <CommentBox />,
+    document.getElementById('comment')
+);

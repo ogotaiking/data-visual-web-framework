@@ -11,8 +11,9 @@ class HelloMessage extends React.Component {
          <div id="tabledemo" ></div>
          <div id="chart" height="100px" ></div>
          <div id="datepick"  ></div>
+         <div id="comment"  ></div>
          {['index.js','table.js'].map(function(item){
-            return <script src={"/js/"+item}></script>;
+            return <script src={"/js/"+item} key={item}></script>;
          })
          }
 

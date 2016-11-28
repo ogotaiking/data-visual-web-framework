@@ -29,8 +29,9 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel',
             query: {
-                presets: ['react', 'es2015', 'stage-0']
+                presets: ['react', 'es2015','stage-0']
             }
+
         },{
             test: /\.js[x]?$/,
             include: [ path.resolve(__dirname, './client')],
