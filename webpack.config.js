@@ -62,7 +62,7 @@ module.exports = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
             },
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin('./js/common.js')
     ]
 };

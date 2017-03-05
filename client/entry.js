@@ -4,7 +4,6 @@ import StockChart from './comp/charts/stock'
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 import 'babel-polyfill';
-//var $ = require('jquery');
 var antd = require('antd');
 var DatePickerA = antd.DatePicker;
 import 'antd/dist/antd.css';
@@ -48,7 +47,7 @@ render (
     document.getElementById('chart')
 );
 
-
+/* DEMO REACT DEVELOPMENT on REACT offiical toturial */
 import CommentBox from './comp/comment/CommentBox';
 render (
     <CommentBox />,
