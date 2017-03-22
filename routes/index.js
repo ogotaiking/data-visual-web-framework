@@ -8,7 +8,7 @@ var localeArr = require('../app/controllers/locales/transArr');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', {
-        title: 'Express',
+        title: 'ThinCPE Cloud',
         name: 'Kevin',
         locale: res.locals.locale
     });

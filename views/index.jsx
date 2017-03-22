@@ -9,7 +9,7 @@ class HelloMessage extends React.Component {
         <div>Hello {this.props.__('name')}  {this.props.locale}</div>
          <div id="example" ></div>
          <div id="tabledemo" ></div>
-         <div id="chart" height="100px" ></div>
+         <div id="chart" height="200px" ></div>
          <div id="datepick"  ></div>
          <div id="comment"  ></div>
          {['index.js','table.js'].map(function(item){

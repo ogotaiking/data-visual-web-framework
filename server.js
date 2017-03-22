@@ -97,14 +97,11 @@ app.use('/', routes);
 
 
 
-
-
 var adminMgr = require('./routes/admin');
 app.use('/admin',isLoggedIn, adminMgr);
 
 var testComp = require('./routes/test');
 app.use('/test', testComp);
-
 
 
 var restAPI = require('./routes/restapi');

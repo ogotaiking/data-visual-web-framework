@@ -47,9 +47,10 @@ render (
     document.getElementById('chart')
 );
 
-/* DEMO REACT DEVELOPMENT on REACT offiical toturial */
+/* DEMO REACT DEVELOPMENT on REACT offiical toturial
 import CommentBox from './comp/comment/CommentBox';
 render (
     <CommentBox />,
     document.getElementById('comment')
 );
+*/

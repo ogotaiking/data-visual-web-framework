@@ -1,5 +1,6 @@
 {
 	"Login": "Login",
 	"Username/Email": "Username/Email",
-	"Password": "Password"
+	"Password": "Password",
+	"name": "name"
 }
