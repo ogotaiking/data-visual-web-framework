@@ -1,9 +1,11 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  console.log('fuck');
+  console.log('hello socket.io');
   var socket = io.connect();
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
+  socket.emit('subscribe', 'stats');
+
+  socket.on('message', function (topic,message) {
+    console.log(JSON.parse(message.payload));
+
   });
 </script>

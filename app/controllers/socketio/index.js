@@ -31,6 +31,27 @@ module.exports = function(io) {
         });
     });
 
+/*
+ * Socket IO interworking with MQTT
+ */
+var mqtt = require('mqtt');
+io.sockets.on('connection', function(socket) {
+    var client = mqtt.connect('mqtt://127.0.0.1');
+
+    socket.on('publish', function(topic, message) {
+        client.publish(topic, message);
+    });
+
+    socket.on('subscribe', function (topic) {
+        client.subscribe(topic);
+    });
+
+    client.on('message', function(topic, message) {
+        socket.emit('message', topic, JSON.parse(message.toString()));
+    });
+});
+
+
 /**
   *  Add aditional Socket IO service int the following segment
   */

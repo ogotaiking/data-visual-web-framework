@@ -9,9 +9,18 @@ var DatePickerA = antd.DatePicker;
 import 'antd/dist/antd.css';
 
 
+
+render (
+    <StockChart url="/market.json" name="Sensor Data" symbol="AAPL" pollInterval={2000} />,
+    document.getElementById('chart')
+);
+
 render(<DatePickerA />, document.getElementById('datepick'));
 
 
+
+
+/*
 class AA  extends LikeButton {
     constructor(props)
     {
@@ -38,14 +47,8 @@ render (
     document.getElementById('example')
 );
 
+*/
 
-
-
-
-render (
-    <StockChart url="/market.json" name="苹果" symbol="AAPL" pollInterval={2000} />,
-    document.getElementById('chart')
-);
 
 /* DEMO REACT DEVELOPMENT on REACT offiical toturial
 import CommentBox from './comp/comment/CommentBox';

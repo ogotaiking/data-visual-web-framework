@@ -6,7 +6,7 @@ var isLoggedIn = require('../app/controllers/login/authCheck');
 var localeArr = require('../app/controllers/locales/transArr');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',isLoggedIn, function(req, res, next) {
     res.render('index', {
         title: 'ThinCPE Cloud',
         name: 'Kevin',
@@ -41,7 +41,7 @@ router.get('/login', function(req, res, next) {
 });
 // process the login form
 router.post('/login', passport.authenticate('local-login', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
 }));

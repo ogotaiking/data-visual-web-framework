@@ -3,7 +3,7 @@ module.exports=function(io){
   io.of('/stock_md').on('connection', function(socket){
     socket.on('join', function (rooms) {
         console.log('User:%s subscribed to Symbol: %s', socket.request.user.local.username , rooms);
-        console.log(socket.request.user);
+        //console.log(socket.request.user);
         if (Array.isArray(rooms)) {
             rooms.forEach(function(room) {
                 socket.join(room);

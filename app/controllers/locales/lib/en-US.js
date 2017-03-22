@@ -2,5 +2,6 @@
 	"Username/Email": "Username/Email",
 	"Login": "Login",
 	"Password": "Password",
-	"name": "name"
+	"name": "name",
+    "Kevin": "kevin-en"
 }
