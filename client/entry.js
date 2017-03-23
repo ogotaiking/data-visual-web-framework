@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import 'babel-polyfill';
 var antd = require('antd');
 var DatePickerA = antd.DatePicker;
-import 'antd/dist/antd.css';
+
 
 
 
@@ -18,9 +18,15 @@ render (
 render(<DatePickerA />, document.getElementById('datepick'));
 
 
-
+import MQClientTable from './comp/thincpe/clientlist';
+render (
+    <MQClientTable />,
+    document.getElementById('comment')
+);
 
 /*
+
+
 class AA  extends LikeButton {
     constructor(props)
     {

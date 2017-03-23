@@ -6,6 +6,7 @@ module.exports = {
         index : path.resolve(__dirname, 'client/entry.js'),
         table : path.resolve(__dirname, 'client/comp/table.js')
 
+
     },
     output: {
         path: __dirname + '/public',

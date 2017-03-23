@@ -1,11 +1,11 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  console.log('hello socket.io');
   var socket = io.connect();
-  socket.emit('subscribe', 'stats');
+  socket.emit('subscribe', 'MQ_CLIENT_LIST');
 
   socket.on('message', function (topic,message) {
     console.log(JSON.parse(message.payload));
-
   });
+
+  socket.emit('publish', 'hahaha','hello');
 </script>

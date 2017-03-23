@@ -8,6 +8,7 @@ class DefaultLayout extends React.Component {
           <link rel='stylesheet' href='/stylesheets/style.css' />
           <script src="/js/common.js"></script>
           <script src="/js/vendor.js"></script>
+          <script src="/socket.io/socket.io.js"></script>
           </head>
         <body>{this.props.children}
 

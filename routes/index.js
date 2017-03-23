@@ -9,7 +9,7 @@ var localeArr = require('../app/controllers/locales/transArr');
 router.get('/',isLoggedIn, function(req, res, next) {
     res.render('index', {
         title: 'ThinCPE Cloud',
-        name: 'Kevin',
+        username: req.user.local.username,
         locale: res.locals.locale
     });
 });

@@ -13,11 +13,9 @@ class HelloMessage extends React.Component {
           <link rel="stylesheet" href="css/font-awesome.min.css"/>
         <div className="page-header "  style={divStyle}>
           <h1><span  ></span> Thin CPE Cloud Management System</h1>
-          <a href="/logout" className="btn btn-default btn-sm">Logout</a>
+          Hello {this.props.username} <a href="/logout" className="btn btn-default btn-sm">Logout</a>
         </div>
 
-        <div>Hello {this.props.__('name')}  {this.props.locale}</div>
-         <div id="example" ></div>
          <div id="tabledemo" ></div>
          <div id="datepick"  ></div>
          <div id="chart" height="200px" ></div>
