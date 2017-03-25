@@ -36,7 +36,8 @@ const StockChart = React.createClass({
                valueDecimals: 2
            }
        }]
-   }};
+   }
+ };
  },
  componentDidMount: function() {
    this.loadMarketDataFromServer();

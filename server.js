@@ -89,20 +89,17 @@ app.use(urlAuthcheck('/views'));
 //static folder should be used after url login check
 app.use(express.static(path.join(__dirname, 'public')));
 
-/**
- * Route Section======================================================
- **/
+/******************************************************************************
+ * Route Section                                                              *
+ ******************************************************************************/
 
 app.use('/', routes);
-
-
 
 var adminMgr = require('./routes/admin');
 app.use('/admin',isLoggedIn, adminMgr);
 
 var testComp = require('./routes/test');
 app.use('/test', testComp);
-
 
 var restAPI = require('./routes/restapi');
 app.use('/api',restAPI);

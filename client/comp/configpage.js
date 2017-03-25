@@ -1,11 +1,11 @@
 /* demo */
-
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 import 'babel-polyfill';
 
 
-import MQClientTable from './comp/thincpe/clientlist';
+
+import MQClientTable from './thincpe/clientlist';
 render (
     <MQClientTable />,
     document.getElementById('MQClientTable')
@@ -13,15 +13,15 @@ render (
 
 
 
-import CpeWirelessClientTable from './comp/thincpe/cpestats';
+import CpeWirelessClientTable from './thincpe/cpestats';
 render (
     <CpeWirelessClientTable />,
     document.getElementById('CpeWirelessClientTable')
 );
 
 
-import NavBarComp from './comp/navbar'
+import NavBarComp from './navbar'
 render (
-   <NavBarComp selectkey="1" />,
+   <NavBarComp selectkey="2" />,
    document.getElementById('navbar')
 );

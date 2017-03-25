@@ -3,5 +3,6 @@
 	"Login": "Login",
 	"Password": "Password",
 	"name": "name",
-    "Kevin": "kevin-en"
+	"Kevin": "kevin-en",
+	"Oops! Wrong password.": "Oops! Wrong password."
 }

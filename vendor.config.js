@@ -4,11 +4,16 @@ const vendors = [
     'react',
     'react-dom',
     'react-highcharts',
+    'react-bootstrap',
     'highcharts',
     'highcharts/highstock.js',
     'react-highcharts/dist/ReactHighstock.js',
-    'antd',
-    'antd/dist/antd.css',
+    'antd/lib/date-picker',
+    'antd/lib/date-picker/style',
+    'antd/lib/table',
+    'antd/lib/table/style',
+//    'antd',
+//    'antd/dist/antd.css',
     'css-loader/lib/css-base.js',
     'style-loader/addStyles.js',
     'babel-polyfill',
@@ -26,6 +31,9 @@ module.exports = {
     },
     module: {
         loaders: [{
+            test: /\.less$/,
+            loader: 'style-loader!css-loader!less-loader'
+        }, {
             test: /\.css$/,
             loader: 'style!css'
         }, ]

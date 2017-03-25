@@ -14,6 +14,32 @@ router.get('/',isLoggedIn, function(req, res, next) {
     });
 });
 
+
+router.get('/config',isLoggedIn, function(req, res, next) {
+    res.render('comp/configpage', {
+        title: 'Configuration',
+        username: req.user.local.username,
+        locale: res.locals.locale
+    });
+});
+
+
+router.get('/iotsensor',isLoggedIn, function(req, res, next) {
+    res.render('comp/iotsensor', {
+        title: 'IOT Sensor Realtime',
+        username: req.user.local.username,
+        locale: res.locals.locale
+    });
+});
+
+router.get('/evpn',isLoggedIn, function(req, res, next) {
+    res.render('comp/evpn', {
+        title: 'Ethernet EVPN',
+        username: req.user.local.username,
+        locale: res.locals.locale
+    });
+});
+
 // PROFILE SECTION =========================
 router.get('/profile', isLoggedIn, function(req, res, next) {
     res.render('profile.ejs', {
@@ -57,7 +83,7 @@ router.get('/signup', function(req, res, next) {
 
 // process the signup form
 router.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile', // redirect to the secure profile section
+    successRedirect: '/', // redirect to the secure profile section
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
 }));

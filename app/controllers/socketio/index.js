@@ -55,7 +55,6 @@ io.sockets.on('connection', function(socket) {
 /**
   *  Add aditional Socket IO service int the following segment
   */
-    require('./demo/basic')(io);
     require('./demo/chat')(io);
     require('./demo/stock_md')(io);
 

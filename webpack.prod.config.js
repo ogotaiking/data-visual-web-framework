@@ -4,7 +4,9 @@ var path = require('path');
 module.exports = {
     entry: {
         index : path.resolve(__dirname, 'client/entry.js'),
-        table : path.resolve(__dirname, 'client/comp/table.js')
+        configpage : path.resolve(__dirname, 'client/comp/configpage.js'),
+        iotsensor : path.resolve(__dirname, 'client/comp/iotsensor.js'),
+        evpn : path.resolve(__dirname, 'client/comp/evpn.js')
 
     },
     output: {
@@ -17,6 +19,9 @@ module.exports = {
     },
     module: {
         loaders: [{
+            test: /\.less$/,
+            loader: 'style-loader!css-loader!less-loader'
+        }, {
             test: /\.css$/,
             loader: 'style!css'
         }, {
