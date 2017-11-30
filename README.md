@@ -2,86 +2,28 @@
  build by Express + React + Socket.io + MongoDB
 
 ## 1.Initial Setup
-    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-    sudo apt-get install -y nodejs
+NodeJS 8.9.1
 
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-    echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+    sudo sh -c "echo deb https://deb.nodesource.com/node_8.x zesty main > /etc/apt/sources.list.d/nodesource.list"
+    sudo apt-get update
+    sudo apt-get install nodejs
+
+MongoDB 3.4
+
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+    echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
     sudo apt-get update
     sudo apt-get install -y mongodb-org
+    systemctl enable mongod.service
 
-    # add /etc/systemd/system/mongodb.service
-    
-    [Unit]
-    Description=High-performance, schema-free document-oriented database
-    After=network.target
-
-    [Service]
-    User=mongodb
-    ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
-
-    [Install]
-    WantedBy=multi-user.target
-
-
-    # Then  sudo systemctl start mongodb / sudo systemctl enable mongodb
-
-    #DISABLE HUDGEPAGE Trasnparent
-
-    Create the following file at /etc/init.d/disable-transparent-hugepages 
-
-    #!/bin/bash
-    ### BEGIN INIT INFO
-    # Provides:          disable-transparent-hugepages
-    # Required-Start:    $local_fs
-    # Required-Stop:
-    # X-Start-Before:    mongod mongodb-mms-automation-agent
-    # Default-Start:     2 3 4 5
-    # Default-Stop:      0 1 6
-    # Short-Description: Disable Linux transparent huge pages
-    # Description:       Disable Linux transparent huge pages, to improve
-    #                    database performance.
-    ### END INIT INFO
-
-    case $1 in
-      start)
-        if [ -d /sys/kernel/mm/transparent_hugepage ]; then
-          thp_path=/sys/kernel/mm/transparent_hugepage
-        elif [ -d /sys/kernel/mm/redhat_transparent_hugepage ]; then
-          thp_path=/sys/kernel/mm/redhat_transparent_hugepage
-        else
-          return 0
-        fi
-
-        echo 'never' > ${thp_path}/enabled
-        echo 'never' > ${thp_path}/defrag
-
-        re='^[0-1]+$'
-        if [[ $(cat ${thp_path}/khugepaged/defrag) =~ $re ]]
-        then
-          # RHEL 7
-          echo 0  > ${thp_path}/khugepaged/defrag
-        else
-          # RHEL 6
-          echo 'no' > ${thp_path}/khugepaged/defrag
-        fi
-
-        unset re
-        unset thp_path
-        ;;
-    esac
-
-    then--------------------
-    sudo chmod 755 /etc/init.d/disable-transparent-hugepages
-    sudo update-rc.d disable-transparent-hugepages defaults
-    
-
-
+CNPM & YARN
 
     sudo  npm install -g cnpm --registry=https://registry.npm.taobao.org
     sudo cnpm install webpack express express-generator pm2 --global
 
-     sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
+    sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
     echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo apt-get update && sudo apt-get install yarn
 
@@ -94,16 +36,17 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
 
 ### Install nginx:
 
+    sudo apt-get remove apache2
     sudo apt-get install -y nginx
 
 ### Generate Certification File for SSL
 
     sudo mkdir /etc/nginx/cert; cd /etc/nginx/cert
-    openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-    openssl rsa -passin pass:x -in server.pass.key -out server.key
-    rm server.pass.key
-    openssl req -new -key server.key -out server.csr
-    openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
+    sudo openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
+    sudo openssl rsa -passin pass:x -in server.pass.key -out server.key
+    sudo rm server.pass.key
+    sudo openssl req -new -key server.key -out server.csr
+    sudo openssl x509 -req -sha256 -days 365 -in server.csr -signkey server.key -out server.crt
 
 
 
@@ -137,7 +80,9 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
     }
 
 ### Enable Gzip on nginx
-    sudo vi /etc/nginx/nginx.conf , enable the following config
+    sudo vi /etc/nginx/nginx.conf 
+
+    Enable the following config
 
         gzip on;
         gzip_disable "msie6";
