@@ -95,9 +95,18 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
         gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
 
 
-## 3. Resolve webpack build slow problem
+## 3. Install and build js
 
-### 3.1 Debug webpack build runtime:
+   npm install
+   webpack  --config vendor.config.js
+   webpack --config webpack.config.js  or  prod.config.js
+   npm start
+
+
+
+## 4. Resolve webpack build slow problem
+
+### 4.1 Debug webpack build runtime:
 
     webpack --profile --display-modules
 
@@ -130,14 +139,18 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
                [0] 561ms -> [9] 156ms -> factory:288ms building:7777ms = 8782ms
              5 hidden modules
 
-### 3.2 setup vendor.js , ref venor.config.js
+### 4.2 setup vendor.js , ref venor.config.js
+
     webpack --config vendor.config.js
 
     2 files :  manifest.json / vendor.js , include vendor.js in layout template
 
-### 3.3 modify webpack.config.js , add plugins:
+### 4.3 modify webpack.config.js , add plugins:
 
     new webpack.DllReferencePlugin({
       context: __dirname,
       manifest: require('./manifest.json'),
-    }),
+    }),a
+
+
+

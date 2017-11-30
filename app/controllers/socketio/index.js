@@ -57,6 +57,4 @@ io.sockets.on('connection', function(socket) {
   */
     require('./demo/chat')(io);
     require('./demo/stock_md')(io);
-
-
 }

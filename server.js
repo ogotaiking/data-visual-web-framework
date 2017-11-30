@@ -64,7 +64,7 @@ var flash    = require('connect-flash');
  * DB and User Authentication ======================================
  **/
 // connect to our database
-mongoose.connect(configDB.url);
+mongoose.connection.openUri(configDB.url);
 
 // pass passport for configuration
 require('./app/controllers/login/passport')(passport);
