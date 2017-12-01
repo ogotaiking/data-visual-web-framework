@@ -39,6 +39,8 @@ class IOTSensor extends React.Component {
 
                             <div id="datepick" style={divStyle}></div>
                             <div id="chart" height="300px" style={divStyle}></div>
+                            <div id="chartb" height="300px" style={divStyle}></div>
+
 
 
                     </div>

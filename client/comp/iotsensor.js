@@ -25,3 +25,14 @@ render (
    <NavBarComp selectkey="3" />,
    document.getElementById('navbar')
 );
+
+
+import { data } from  './data.js'
+
+
+import PieReact from './charts/pie'
+render (
+    <PieReact  option={data} />,
+    document.getElementById('chartb')
+);
+
