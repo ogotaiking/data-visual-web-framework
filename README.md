@@ -102,55 +102,30 @@ We use nginx as a proxy server. the following steps is setting Nginx as Proxy.
    webpack --config webpack.config.js  or  prod.config.js
    npm start
 
+### 3.1 check package update
+   npm outdated
+   npm install xxx@version
+
+## 4.folder
+
+### 4.1  ./app
+   Server side function
+
+#### 4.1.1 controllers
+   locales 
+   login
+   userMgmt
+  
+   SocketIO/MQTT
+
+#### 4.1.2 models
+   user schema in mongodb
+
+## 4.2  ./views
+   default layout style, support ejs template and React ServerSide rendering.
 
 
-## 4. Resolve webpack build slow problem
 
-### 4.1 Debug webpack build runtime:
-
-    webpack --profile --display-modules
-
-        Hash: 92bf8258e85b08683c92
-        Version: webpack 1.13.3
-        Time: 12858ms
-                 Asset       Size  Chunks             Chunk Names
-          /js/index.js     256 kB       0  [emitted]  index
-          /js/table.js  541 bytes       1  [emitted]  table
-        ./js/common.js     325 kB       2  [emitted]  ./js/common.js
-           [0] ./client/entry.js 4.04 kB {0} [built]
-               factory:23ms building:538ms = 561ms
-           [0] ./client/comp/table.js 874 bytes {1} [built]
-               factory:260ms building:331ms dependencies:407ms = 998ms
-           [1] ./client/comp/button.js 2.71 kB {0} [built]
-       [0] 561ms -> factory:49ms building:60ms dependencies:40ms = 710ms
-           [5] ./client/comp/charts/stock.js 2.49 kB {0} [built]
-               [0] 561ms -> factory:50ms building:95ms dependencies:6ms = 712ms
-           [6] ./~/react-highcharts/dist/ReactHighstock.js 2.22 kB {0} [built]
-               [0] 561ms -> [5] 145ms -> factory:8054ms building:28ms dependencies:1ms = 8789ms
-           [7] ./~/highcharts/highstock.js 250 kB {0} [built]
-               [0] 561ms -> [5] 145ms -> [6] 8082ms -> factory:4ms building:308ms = 9100ms
-           [9] ./~/antd/dist/antd.css 864 bytes {2} [built]
-               [0] 561ms -> factory:152ms building:4ms = 717ms
-          [10] ./~/css-loader!./~/antd/dist/antd.css 315 kB {2} [built]
-               [0] 561ms -> [9] 156ms -> factory:0ms building:8042ms = 8759ms
-          [11] ./~/css-loader/lib/css-base.js 1.51 kB {2} [built]
-               [0] 561ms -> [9] 156ms -> [10] 8042ms -> factory:1ms building:31ms = 8791ms
-          [12] ./~/style-loader/addStyles.js 7.15 kB {2} [built]
-               [0] 561ms -> [9] 156ms -> factory:288ms building:7777ms = 8782ms
-             5 hidden modules
-
-### 4.2 setup vendor.js , ref venor.config.js
-
-    webpack --config vendor.config.js
-
-    2 files :  manifest.json / vendor.js , include vendor.js in layout template
-
-### 4.3 modify webpack.config.js , add plugins:
-
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('./manifest.json'),
-    }),a
 
 
 
