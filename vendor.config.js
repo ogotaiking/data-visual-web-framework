@@ -12,6 +12,18 @@ const vendors = [
     'antd/lib/date-picker/style',
     'antd/lib/table',
     'antd/lib/table/style',
+    'antd/lib/layout',
+    'antd/lib/layout/style',
+    'antd/lib/menu',
+    'antd/lib/menu/style',
+    'antd/lib/breadcrumb',
+    'antd/lib/breadcrumb/style',
+    'antd/lib/icon',
+    'antd/lib/icon/style',
+    'echarts',
+
+
+
 //    'antd',
 //    'antd/dist/antd.css',
     'css-loader/lib/css-base.js',

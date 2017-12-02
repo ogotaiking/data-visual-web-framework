@@ -21,7 +21,7 @@ MongoDB 3.4
 CNPM & YARN
 
     sudo  npm install -g cnpm --registry=https://registry.npm.taobao.org
-    sudo cnpm install webpack express express-generator pm2 --global
+    sudo cnpm install webpack-dev-server webpack express express-generator pm2 --global
 
     sudo apt-key adv --keyserver pgp.mit.edu --recv D101F7899D41F3C3
     echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
