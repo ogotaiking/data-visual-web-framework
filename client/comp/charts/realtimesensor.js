@@ -1,11 +1,12 @@
 /*Ajax Based React Component*/
 import React, {Component} from 'react';
+var createReactClass = require('create-react-class');
 import {render} from 'react-dom';
 import Highcharts from 'react-highcharts/dist/ReactHighcharts'
 import $ from 'jquery';
 var socket = io.connect();
 
-const RealtimeChart = React.createClass({
+const RealtimeChart = createReactClass({
     getInitialState: function() {
         return {
             data: [],

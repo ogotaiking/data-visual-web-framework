@@ -12,7 +12,6 @@ const vendors = [
     'antd/lib/date-picker/style',
     'antd/lib/table',
     'antd/lib/table/style',
-    'echarts',
 //    'antd',
 //    'antd/dist/antd.css',
     'css-loader/lib/css-base.js',
@@ -23,7 +22,7 @@ const vendors = [
 
 module.exports = {
     output: {
-        path: __dirname + '/public/js',
+        path: 'public/js',
         filename: '[name].js',
         library: '[name]',
     },
@@ -48,7 +47,8 @@ module.exports = {
                 warnings: false
             }
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),

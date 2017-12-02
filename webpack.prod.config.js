@@ -12,20 +12,13 @@ module.exports = {
     output: {
         path: __dirname + '/public',
         publicPath: '/',
-        filename: 'js/[name].js'
+        filename: '/js/[name].js'
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['', '.js', '.jsx']
     },
     module: {
-        rules: [
-        {
-            test: /\.js[x]?$/,
-            include: [ path.resolve(__dirname, './client')],
-            exclude: /node_modules/,
-            enforce: 'pre',
-            use: [{loader: 'eslint-loader'}],
-        }, { 
+        loaders: [{
             test: /\.less$/,
             loader: 'style-loader!css-loader!less-loader'
         }, {
@@ -38,11 +31,19 @@ module.exports = {
             test: /\.js[x]?$/,
             include: [ path.resolve(__dirname, './client')],
             exclude: /node_modules/,
-            loader: 'babel-loader',
+            loader: 'babel',
             query: {
                 presets: ['react', 'env','stage-0']
             }
+        },{
+            test: /\.js[x]?$/,
+            include: [ path.resolve(__dirname, './client')],
+            exclude: /node_modules/,
+            loader: 'eslint-loader',
         } ]
+    },
+    eslint: {
+      configFile: '.eslintrc'
     },
     plugins: [
         new webpack.DllReferencePlugin({
@@ -57,7 +58,8 @@ module.exports = {
                 warnings: false
             }
         }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production'),

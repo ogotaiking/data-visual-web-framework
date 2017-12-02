@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import 'babel-polyfill';
+var createReactClass = require('create-react-class');
+
 /*
 var antd = require('antd');
 var Table = antd.Table;
@@ -71,7 +73,7 @@ const columns = [
     }
 ];
 
-var CpeWirelessClientTable = React.createClass({
+var CpeWirelessClientTable = createReactClass({
     getInitialState: function() {
         return {data: []};
     },
