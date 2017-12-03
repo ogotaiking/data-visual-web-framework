@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        index : path.resolve(__dirname, 'client/entry.js'),
+        index : path.resolve(__dirname, 'client/index.js'),
         configpage : path.resolve(__dirname, 'client/comp/configpage.js'),
         iotsensor : path.resolve(__dirname, 'client/comp/iotsensor.js'),
         evpn : path.resolve(__dirname, 'client/comp/evpn.js')

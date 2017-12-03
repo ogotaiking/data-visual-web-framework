@@ -4,6 +4,13 @@ import React, {Component} from 'react';
 import { render } from 'react-dom';
 import 'babel-polyfill';
 
+import DefaultEntry from './defaultentry';
+render(
+    <DefaultEntry />,  
+    document.getElementById('DefaultEntry')
+);
+
+
 
 import MQClientTable from './comp/thincpe/clientlist';
 render (
@@ -25,3 +32,6 @@ render (
    <NavBarComp selectkey="1" />,
    document.getElementById('navbar')
 );
+
+
+

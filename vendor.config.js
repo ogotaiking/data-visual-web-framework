@@ -21,9 +21,6 @@ const vendors = [
     'antd/lib/icon',
     'antd/lib/icon/style',
     'echarts',
-
-
-
 //    'antd',
 //    'antd/dist/antd.css',
     'css-loader/lib/css-base.js',
