@@ -7,11 +7,13 @@ class HelloMessage extends React.Component {
             <DefaultLayout title={this.props.title} >
                 <link rel="stylesheet" href="css/bootstrap.min.css"/>
                 <link rel="stylesheet" href="css/font-awesome.min.css"/>
-                <div id="DefaultEntry"></div>
+
+                <div id="DefaultEntry" ref="mainDiv"  username={this.props.username} ></div>
+
                 {['index.js'].map(function(item) {
                     return <script src={"/js/" + item} key={item}></script>;
                 })}
-            </DefaultLayout>
+           </DefaultLayout>
         );
     }
 }
