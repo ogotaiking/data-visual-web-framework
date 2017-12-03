@@ -28,13 +28,14 @@ var alignRight = {
 
 class DefaultEntry extends React.Component {
   componentWillMount() {
+    var username =  document.getElementById('DefaultEntry').getAttribute('username');
     this.state = {
       collapsed: false,
-      name : 'null'
+      name: username
     };
   }
   componentDidMount() {
-        console.log(findDOMNode(this).getAttribute('username'));
+     this.state.name = document.getElementById('DefaultEntry').getAttribute('username');
   }
 
   onCollapse = (collapsed) => {
